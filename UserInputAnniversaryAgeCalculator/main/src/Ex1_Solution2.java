@@ -9,8 +9,11 @@ import java.util.Scanner;
 public class Ex1_Solution2 {
 
   public static void main(String[] args)  {
-      String pattern = "yyyy.MM.dd"; // could be read from the CLI
-     // SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern); // We can still pass in the "yyyy-MM-dd" here
+    String pattern1 = "dd/MM/yyyy"; // could be read from the CLI
+    String pattern2 = "d/MM/yy"; // could be read from the CLI
+    String pattern3 = "MMM dd"; // could be read from the CLI
+
+    // SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern); // We can still pass in the "yyyy-MM-dd" here
 
     // Using simpleDateFormat to format a given date
 
@@ -21,7 +24,10 @@ public class Ex1_Solution2 {
 
 // Using DateTimeFormatter to format a LocalDate object
 
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
+    DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern(pattern1);
+    DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern(pattern2);
+    DateTimeFormatter formatter3 = DateTimeFormatter.ofPattern(pattern3);
+
 
 
     Scanner scanner = new Scanner(System.in);
@@ -38,15 +44,21 @@ public class Ex1_Solution2 {
     int day = Integer.parseInt(dayString);
     Month month = Month.valueOf(monthString);
 
-    LocalDate birthdate = LocalDate.of(year, month, day);
-    String formatedBirthdate = birthdate.format(formatter);
+    LocalDate birthdate = LocalDate.of(year, month, day); // default format
+    String formatedBirthdate1 = birthdate.format(formatter1); // custom format
+    String formatedBirthdate2 = birthdate.format(formatter2);// custom format
+    String formatedBirthdate3 = birthdate.format(formatter3);// custom format
 
-    System.out.println(year);
+
+   /* System.out.println(year);
     System.out.println(day);
-    System.out.println(month);
+    System.out.println(month);*/
 
     System.out.println(birthdate);
-    System.out.println(formatedBirthdate);
+    System.out.println(formatedBirthdate1);
+    System.out.println(formatedBirthdate2);
+    System.out.println(formatedBirthdate3);
+
 
   }
 }
